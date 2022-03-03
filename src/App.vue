@@ -2,11 +2,7 @@
 import { computed, ref } from "vue";
 import { APISettings } from "./api/config.js";
 
-let id = 0;
-
 const images = ref([]);
-
-const theImage = ref();
 
 const img = ref("");
 
@@ -55,13 +51,6 @@ async function postImage() {
   })
 }
 
-function logImages() {
-  console.log(images.value);
-  console.log(images.value[2]);
-  console.log(images.value.length);
-  console.log(theImage.value);
-}
-
 const imageThere = computed(() => {
   return img.value.length > 0;
 });
@@ -84,7 +73,6 @@ function previewFiles(event) {
     </li>
   </ul>
   <button @click="fetchImages">Fetch images</button>
-  <button @click="logImages">Log images</button>
   <form @submit.prevent="postImage">
     <input type="file" accept="application/image" @change="previewFiles" />
     <button type="submit"> submit </button>
